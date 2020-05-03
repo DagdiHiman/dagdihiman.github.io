@@ -23,7 +23,7 @@ $highlightColorBlue:#1da1f2;
     }
 }
   
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:700px) {
     /* For mobile phones: */
     .left-section, .middle-section, .right-section {
       width:100% !important;
@@ -229,13 +229,14 @@ body {
             display: block;
             height: 100%;
             margin-top:20px;
+            color:inherit;
         }
         
         .left-section {
             float:left;
             width:20%;
             text-align:center;
-            color:black;
+
             display:block; 
             margin-top:7px;
             height:100%;
@@ -364,14 +365,26 @@ body.night{
         width:100%;
         text-decoration: none;
         text-align: center;
-        height:20px;
+        padding: 10px 5px;
+        margin: 5px;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
     }
-    input[type="text"] {
-        color:$highlightColorOrange;
-
+    // input[type="text"] {
+    //     color:$highlightColorOrange;
+    // }
+    input[type="button"] {
+        background-color: $highlightColorBlue;
+        
     }
     input[type="button"] {
         background-color: $highlightColorBlue;
+        
+        &:hover {
+
+        }
     }
 }
 

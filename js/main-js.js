@@ -28,7 +28,7 @@ async function init() {
     pushupsMaxPredictions = pushupsModel.getTotalClasses();
 
     // Convenience function to setup a webcam
-    const size = 1600;
+    const size = 1080;
     const flip = true; // whether to flip the webcam
     webcam = new tmPose.Webcam(size, size*2, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
@@ -47,7 +47,9 @@ async function init() {
         labelContainer.appendChild(document.createElement("div"));
     }
 }
-
+function countSquats() {
+    
+}
 async function loop(timestamp) {
     webcam.update(); // update the webcam frame
     await predict();

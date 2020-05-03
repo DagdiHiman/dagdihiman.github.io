@@ -1,66 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exercise Buddy</title>
+  <!-- jquery import -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script> 
+
   <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css\style.css">
+
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
   <script src="js/main-js.js"></script>
+
 </head>
 <body>
-  <div id="top-bar">
-      <h1>ExerciseBuddy</h1>
+  <img class="easter-bunny-image" id="bunny-imag" src="..\icons\easter-bunny.png">
+  <div id="container" class="container">
+    <div id="top-bar">
+      <h1><a href="index.html">ExerciseBuddy</a></h1></a>
       <nav class="nav-class">
           <ul>
-              <li><a href="index.html">Home</a></li>
+              <!-- <li><a href="index.html">Home</a></li> -->
+              <li><a href="pages/getting-started.html">Getting Started</a></li>
               <li>
-                  <a href="#">Workout</a>
-                  <ul>
+                  <a href="./pages/muscle.html">MuscleMan</a>
+                  <!-- <ul>
                       <li><a href="#">Men</a></li>
                       <li><a href="#">Women</a></li>
-                  </ul>
+                  </ul> -->
               </li>
               <li><a href="pages/about-us.html">About</a></li>
-              <li><a href="pages/contact-us.html">Contact</a></li>
-              <li><a href="pages/getting-started.html">Getting Started</a></li>
-              <li onclick="dark_mode()">dark mode</li>
+              <li class="nav-move1"><a href="pages/contact-us.html">Contact</a></li>
+              <li class="nav-move1" onclick="dark_mode()" ondblclick="bunny_animate()">dark</li>
+              <li class="nav-more">More
+                <ul>
+                  <li><a href="pages/contact-us.html">Contact</a></li>
+                  <li onclick="dark_mode()" ondblclick="bunny_animate()">dark</li>
+                </ul>
+              </li>
           </ul>
       </nav>
-  </div>
-  <div class="body-container">
-    <div class="left-section">
-      <div id="label-container"></div>
-      <hr>
-      <div id="squat-boolean-container"></div>
-      <div id="squat-count-container"></div>
-      <div id="squat-status-container"></div>
-      <hr>
-      <div id="pushup-boolean-container"></div>
-      <div id="pushup-count-container"></div>
-      <div id="pushup-status-container"></div>
     </div>
-    <div class="middle-section">
-      <div>Teachable Machine Pose Model</div>
-      <div><canvas id="canvas"></canvas></div>
-      
+    <div  class="sections">
+        <div class="left-section">
+          <div id="label-container"></div>
+          <hr>
+          <div id="squat-boolean-container"></div>
+          <div id="squat-count-container"></div>
+          <div id="squat-status-container"></div>
+          <hr>
+          <div id="pushup-boolean-container"></div>
+          <div id="pushup-count-container"></div>
+          <div id="pushup-status-container"></div>
+        </div>
+        <div class="middle-section">
+          <div>Teachable Machine Pose Model</div>
+          <div><canvas id="canvas"></canvas></div>
+        </div>
+        <div class="right-section">
+          <input type="button" onclick="init()" value="start camera"></input><br>
+          <input type="text" value="10" id="squat-entry"/>
+          <input type="button" onclick="countSquats()" value="Start Squats"></input><br>
+          <input type="text" value="10" id="pushup-entry"/>
+          <input type="button" type="button" onclick="countPushups()" value="Start pushups"></input><br>
+        </div>
+      </div>
     </div>
-    <div class="right-section">
-      <button type="button" onclick="init()">Camera Permission</button>
-      <button type="button" onclick="countSquats()">Start Squats</button>
-      <button type="button" onclick="countPushups()">Start pushups</button>
-    </div>
-  </div>
+    <!-- <div class="darkmode fa-moon-cloud"></div>
+    <div class="clip"></div>
+    <div class="darkmodebtn"><img src="https://img.icons8.com/cotton/64/000000/settings--v1.png" width="30px" height="30px" /></div> -->
 
-  <script>
-  function dark_mode() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
-    var topbar = document.getElementById("top-bar");
-    element.classList.toggle("topbar-dark-mode");
-  }
-  </script>
-
+  </div>
 </body>
 </html>

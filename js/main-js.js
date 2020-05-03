@@ -28,9 +28,9 @@ async function init() {
     pushupsMaxPredictions = pushupsModel.getTotalClasses();
 
     // Convenience function to setup a webcam
-    const size = 400;
+    const size = 1600;
     const flip = true; // whether to flip the webcam
-    webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+    webcam = new tmPose.Webcam(size, size*2, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
     window.requestAnimationFrame(loop);
@@ -125,3 +125,40 @@ function drawPose(pose) {
         }
     }
 }
+function dark_mode() {
+    $(".container").toggleClass("dark");
+}
+
+//function to toggle dark mode
+// Code By Webdevtrick ( https://webdevtrick.com )
+let buttonenabled = true, scroll = 0;
+$(document).on("click", ".darkmode", function(){
+	if(!buttonenabled) return;
+    buttonenabled = false;
+    let clipContents=$(".clip")[0].outerHTML;
+	$(".clip").html($("body >.container")[0].outerHTML); 
+	$(".clip .container").toggleClass("dark").scrollTop(scroll); 
+	$(".clip").addClass("anim"); 
+	setTimeout(function(){
+		$("body >.container").replaceWith($(".clip").html()) 
+		//scrollbind($("body >.container")); 
+		//$("body >.container").scrollTop(scroll);
+		$(".clip").html(clipContents).removeClass("anim"); 
+		buttonenabled = true;
+	}, 1000); 
+});
+function bunny_animate() {
+    bunny = $("#bunny-imag");
+    bunny.addClass('animate');
+    setTimeout(function(){
+        bunny.removeClass('animate');
+    },10000);
+}
+const scrollbind = el => el.bind("scroll", function(){
+	scroll = $(this).scrollTop();
+	if($(".container").length > 1)
+		$(".container").scrollTop(scroll); 
+		
+});
+scrollbind($(".container"));
+  
